@@ -48,6 +48,12 @@ class BukuController extends Controller
     {
         $data = $request->validated();
         $data['created_by'] = auth()->user()->id;
+        
+        if ($request->hasFile('cover')) {
+            $data['cover'] = $request->file('cover')->store('book-cover', 'public');
+        } else {
+            unset($data['cover']); // biar gak error pas update
+        }
 
         Buku::create($data);
     }

@@ -6,8 +6,8 @@ import { Switch } from '@/components/ui/switch';
 import { Table, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
 import { handleFilter } from '@/lib/utils';
-import { BreadcrumbItem, User } from '@/types';
-import { Head, router } from '@inertiajs/react';
+import { BreadcrumbItem, SharedData, User } from '@/types';
+import { Head, router, usePage } from '@inertiajs/react';
 import { Edit, Key, Plus, Trash2 } from 'lucide-react';
 import { FC, useState } from 'react';
 import { toast } from 'sonner';
@@ -22,6 +22,9 @@ type UserIndexProps = {
 
 const UserIndex: FC<UserIndexProps> = ({ users }) => {
   const [search, setSearch] = useState('');
+
+  const {auth} = usePage<SharedData>().props;
+  const me = auth.user;
 
   const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -77,44 +80,46 @@ const UserIndex: FC<UserIndexProps> = ({ users }) => {
           </TableHeader>
           {users
             .filter((data) => handleFilter(data, search))
-            .map((user) => (
-              <TableRow key={user.id}>
-                <TableCell>{user.id}</TableCell>
-                <TableCell>
-                  <Avatar>
-                    <AvatarImage src={user.avatar} alt={user.name} />
-                    <AvatarFallback>{user.name}</AvatarFallback>
-                  </Avatar>
-                </TableCell>
-                <TableCell>{user.name}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>{user.role}</TableCell>
-                <TableCell>
-                  <Switch
-                    defaultChecked={user.active}
-                    onCheckedChange={(value) => handleUpdateActive(value, user)}
-                    disabled={user.role === 'admin'}
-                  />
-                </TableCell>
-                <TableCell>
-                  <ResetPassword user={user}>
-                    <Button variant="ghost" size={'icon'}>
-                      <Key />
-                    </Button>
-                  </ResetPassword>
-                  <EditUser user={user}>
-                    <Button variant="ghost" size={'icon'}>
-                      <Edit />
-                    </Button>
-                  </EditUser>
-                  <ConfirmDelete user={user}>
-                    <Button variant="ghost" size={'icon'}>
-                      <Trash2 />
-                    </Button>
-                  </ConfirmDelete>
-                </TableCell>
-              </TableRow>
-            ))}
+            .map((user) => {
+              const isAdmin = me.role === 'admin';
+
+              return <TableRow key={user.id}>
+              <TableCell>{user.id}</TableCell>
+              <TableCell>
+                <Avatar>
+                  <AvatarImage src={user.avatar} alt={user.name} />
+                  <AvatarFallback>{user.name}</AvatarFallback>
+                </Avatar>
+              </TableCell>
+              <TableCell>{user.name}</TableCell>
+              <TableCell>{user.email}</TableCell>
+              <TableCell>{user.role}</TableCell>
+              <TableCell>
+                <Switch
+                  defaultChecked={user.active}
+                  onCheckedChange={(value) => handleUpdateActive(value, user)}
+                  disabled={user.role === "admin"}
+                />
+              </TableCell>
+              <TableCell>
+                <ResetPassword user={user}>
+                  <Button variant="ghost" size={'icon'} disabled={!isAdmin}>
+                    <Key />
+                  </Button>
+                </ResetPassword>
+                <EditUser user={user}>
+                  <Button variant="ghost" size={'icon'} disabled={!isAdmin}>
+                    <Edit />
+                  </Button>
+                </EditUser>
+                <ConfirmDelete user={user}>
+                  <Button variant="ghost" size={'icon'} disabled={!isAdmin}>
+                    <Trash2 />
+                  </Button>
+                </ConfirmDelete>
+              </TableCell>
+            </TableRow>
+            })}
         </Table>
       </Container>
     </AppLayout>
