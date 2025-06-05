@@ -28,7 +28,7 @@ class PinjamFactory extends Factory
             'user_id' => User::whereRole('user')->pluck('id')->random(),
             'pic_id' => User::whereRole('admin')->pluck('id')->random(),
             'loan_date' => $loandate,
-            'due_date' => new Carbon($loandate)->addDays(7),
+            'due_date' => (new Carbon($loandate))->addDays(7),
             'late' => $islate,
             'fine' => $islate ? 10000 : null,
             'note' => fake()->sentence(),
