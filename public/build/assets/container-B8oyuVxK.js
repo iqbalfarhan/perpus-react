@@ -1,0 +1,1 @@
+import{j as e}from"./app-CuTFWHAe.js";import{H as s}from"./app-layout-DtvwsQil.js";const a=({children:t,title:i,description:r})=>e.jsxs("div",{className:"flex h-full flex-1 flex-col gap-6 rounded-xl p-6",children:[e.jsx(s,{title:i??"Page title",description:r??"Page description"}),t]});export{a as C};

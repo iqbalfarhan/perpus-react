@@ -1,6 +1,0 @@
-import{j as s}from"./app-U1esR2_f.js";import{B as a}from"./badge-CpiD9a3i.js";import{C as i,a as o,c as n,b as d,f as l,e as c}from"./card-D9mfmGyp.js";import{c as m}from"./createLucideIcon-DZi8R-Gi.js";/* empty css            */import"./index-HHF6f8a_.js";import"./index-CFjP5EH2.js";import"./utils-BldNzIHX.js";/**
- * @license lucide-react v0.475.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */const p=[["polyline",{points:"22 7 13.5 15.5 8.5 10.5 2 17",key:"126l90"}],["polyline",{points:"16 7 22 7 22 13",key:"kwv8wd"}]],e=m("TrendingUp",p),v=({value:r=0,title:t})=>s.jsxs(i,{className:"@container/card",children:[s.jsxs(o,{children:[s.jsx(n,{children:t}),s.jsx(d,{className:"text-3xl font-semibold",children:r}),s.jsx(l,{children:s.jsxs(a,{variant:"outline",children:[s.jsx(e,{}),"+12.5%"]})})]}),s.jsxs(c,{className:"flex-col items-start gap-1.5 text-sm",children:[s.jsxs("div",{className:"line-clamp-1 flex gap-2 font-medium",children:["Trending up this month ",s.jsx(e,{className:"size-4"})]}),s.jsx("div",{className:"text-muted-foreground",children:"Visitors for the last 6 months"})]})]});export{v as default};

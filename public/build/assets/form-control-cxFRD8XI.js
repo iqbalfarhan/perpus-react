@@ -1,1 +1,0 @@
-import{j as s}from"./app-U1esR2_f.js";import{c as e}from"./utils-BldNzIHX.js";import{L as m}from"./label-CBVR8LL-.js";const c=({children:o,label:r,direction:t="v"})=>s.jsxs(m,{className:e("flex items-start gap-2",t==="v"?"flex-col":"flex-row"),children:[r&&s.jsx("span",{children:r}),o]});export{c as F};
