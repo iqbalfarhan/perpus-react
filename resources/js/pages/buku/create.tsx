@@ -43,6 +43,7 @@ const CreateBuku: FC<CreateBukuProps> = ({ kategoris, raks, penerbits, bahasas }
     page: 0,
     stock: 0,
     synopsis: '',
+    author: '',
     kategori_id: '',
     rak_id: '',
     penerbit_id: '',
@@ -106,6 +107,10 @@ const CreateBuku: FC<CreateBukuProps> = ({ kategoris, raks, penerbits, bahasas }
 
               <FormControl label="Sinopsis Buku">
                 <Textarea placeholder="Sinopsis buku" value={data.synopsis} onChange={(e) => setData('synopsis', e.target.value)} />
+              </FormControl>
+
+              <FormControl label="Penulis">
+                <Textarea placeholder="Nama penulis" value={data.synopsis} onChange={(e) => setData('author', e.target.value)} />
               </FormControl>
 
               <FormControl label="Bahasa">

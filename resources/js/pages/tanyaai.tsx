@@ -7,6 +7,7 @@ import AppLayout from '@/layouts/app-layout';
 import AISystemInstruction from '@/lib/ai-system-instruction';
 import { BreadcrumbItem } from '@/types';
 import { GoogleGenAI } from '@google/genai';
+import { Head } from '@inertiajs/react';
 import { RefreshCw, Send } from 'lucide-react';
 import React, { FC, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -47,6 +48,7 @@ const TanyaAI: FC<TanyaAIProps> = ({ api_key }) => {
 
   return (
     <AppLayout breadcrumbs={breadcrumbs}>
+      <Head title="AI Pemandu aplikasi" />
       <Container title="Tanya AI seputar aplikasi perpus ini" description="Tanya apapun yang kamu mau tapi seputar aplikasi ini aja">
         <Card className="w-full max-w-4xl self-center">
           <CardContent>
